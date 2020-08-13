@@ -1,7 +1,7 @@
-const name = defaultSettings.title || "AR Library";
+const name = "AR Library";
 
 module.exports = {
-  publicPath: "/ar_library/",
+  publicPath: "/library.web/",
   configureWebpack: {
     name
   }
