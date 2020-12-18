@@ -13,11 +13,6 @@ const routes = [
     path: "/",
     component: Layout,
     children: [
-      // {
-      //   path: "Home",
-      //   name: "Home",
-      //   component: () => import("@/views/Home.vue")
-      // },
       {
         path: "Sample",
         name: "Sample",

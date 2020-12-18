@@ -10,14 +10,13 @@
       <div class="menu-body mt-2">
         <div
           class="menu-first-layer"
-          v-for="(item, index) in menuList"
+          v-for="(item, index) in menu"
           :key="index"
         >
-          <div class="menu-item">
+          <div class="menu-item" v-b-toggle="`collapse-${index}`">
             <span class="px-2">{{ item.BrandName }}</span>
             <button
               class="btn expand-btn float-right"
-              v-b-toggle="`collapse-${index}`"
               v-if="item.SeriesTags.length > 0"
             >
               <font-awesome-icon
@@ -52,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "MenuPanel",
   props: {
@@ -63,22 +64,16 @@ export default {
     };
   },
   created() {
-    this.getMenu();
+    this.$store.dispatch("menu/getMenu");
+  },
+  computed: {
+    ...mapGetters("menu", {
+      menu: "menu"
+    })
   },
   methods: {
     toggleMenu() {
       this.$emit("toggleMenu");
-    },
-    getMenu() {
-      const api = `${process.env.VUE_APP_BASE_API}/api/Menu/GetList`;
-
-      this.$http
-        .get(api)
-        .then(response => {
-          const result = response.data.Resource;
-          this.menuList = JSON.parse(result);
-        })
-        .catch(console.error);
     },
     querySample(i, t) {
       this.$emit("toggleMenu");
@@ -90,6 +85,8 @@ export default {
         SeriesTagName: t.SeriesTagName
       };
 
+      this.$store.commit("menu/setCurrentMenuSet", i);
+
       this.$router.push({ name: "Sample", params: { queryData: queryData } });
     }
   }
@@ -97,9 +94,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep .collapsed > .when-open,
-.not-collapsed > .when-close {
-  display: none;
+// ::v-deep .collapsed .when-open,
+// .not-collapsed .when-close {
+//   display: none;
+// }
+
+.collapsed {
+  .when-open {
+    display: none;
+  }
+}
+
+.not-collapsed {
+  .when-close {
+    display: none;
+  }
 }
 
 .layer {
@@ -120,7 +129,7 @@ export default {
   width: 16rem;
   background-color: #12343b;
   border: 1px solid #2d545e;
-  z-index: 999;
+  z-index: 9999;
   transition: right 0.2s linear;
 
   &.active {
@@ -157,7 +166,7 @@ export default {
     align-items: center;
     color: #e5e5e5;
     width: 100%;
-    cursor: default;
+    cursor: pointer;
   }
 
   .expand-btn {

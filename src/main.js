@@ -8,6 +8,8 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import "@google/model-viewer/dist/model-viewer";
+import "./focus-visible";
+import "./test";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";

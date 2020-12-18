@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="圖層_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+<font horiz-adv-x="2048">
+<!-- Calisto(R) is a trademark of The Monotype Corporation which may be registered in certain jurisdictions. -->
+<!-- Copyright: Copyright 2020 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="CalistoMT" units-per-em="2048" underline-position="-180" underline-thickness="102"/>
+<missing-glyph horiz-adv-x="1536" d="M0,0l0,1280l1024,0l0,-1280M32,32l960,0l0,1216l-960,0z"/>
+<glyph unicode="A" horiz-adv-x="1579" d="M750,1432l63,0C903,1201 1014,938 1145,645l233,-509C1389,118 1400,105 1413,96C1422,90 1471,74 1560,48l0,-59C1439,-4 1349,0 1292,0C1233,0 1133,-4 992,-11l0,59C1073,65 1120,78 1133,88C1146,98 1153,110 1153,123C1153,137 1146,161 1132,194l-100,244C890,439 787,440 722,440l-275,-2l-104,-253C326,144 317,119 317,109C317,100 321,93 330,88C338,82 377,72 446,57C453,55 464,52 477,48l0,-59C363,-4 283,0 236,0C177,0 101,-4 8,-11l0,59C69,61 110,76 133,93C150,106 167,127 185,157C223,223 320,435 475,794M486,538C579,535 645,534 685,534C697,534 799,535 992,538l-253,600z"/>
+<glyph unicode="R" horiz-adv-x="1473" d="M39,1349l0,59C216,1401 357,1397 464,1397C525,1397 583,1398 636,1399C707,1402 756,1403 783,1403C913,1403 1011,1372 1077,1311C1142,1249 1175,1165 1175,1060C1175,989 1160,927 1131,873C1101,818 1058,772 1002,735C961,708 903,685 828,664l333,-434C1202,176 1228,144 1239,135C1256,121 1277,109 1304,99C1341,84 1404,67 1493,48l0,-59C1388,-4 1311,0 1263,0C1208,0 1151,-4 1093,-11C1063,39 1022,102 971,178C920,253 888,298 877,312C870,320 864,328 858,337l-220,302C579,640 519,645 458,652l8,-504C467,128 473,113 484,103C500,90 550,75 634,60C646,58 664,54 689,48l0,-59C568,-4 462,0 370,0C271,0 161,-4 39,-11l0,59l43,9C177,75 232,90 245,102C258,113 265,134 267,164C268,183 270,355 272,678l-4,470C267,1220 266,1261 263,1272C260,1283 253,1291 243,1296C210,1313 159,1328 88,1339C77,1341 61,1344 39,1349M458,737C527,730 581,726 619,726C740,726 830,753 889,807C947,861 976,936 976,1032C976,1116 950,1182 899,1231C847,1280 772,1304 673,1304C638,1304 568,1300 464,1292z"/>
+</font>
+
+	<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  width="303.8" height="214.6" bottomLeftOrigin="true" y="-303.4" x="48.2"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<text transform="matrix(1 0 0 1 48.1577 259.6787)" font-family="'CalistoMT'" font-size="202.5215" fill="#E5E5E5">AR</text>
+</svg>

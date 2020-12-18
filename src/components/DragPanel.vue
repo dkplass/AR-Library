@@ -1,57 +1,147 @@
 <template>
   <div class="drag-panel" :class="{ active: active }">
-    <div class="drag-btn" @click="openDragPanel" @mousedown="dragDown($event)" @mouseleave="dragLeave($event)"></div>
+    <div class="drag-btn" @click="openDragPanel"></div>
     <div class="slider mt-3">
       <div class="slides">
+        <template v-for="(sample, index) in displaySamples">
+          <div
+            v-if="sample.imgName !== ''"
+            class="slide"
+            :key="index"
+            :style="{
+              backgroundImage: 'url(' + sample.imgSrc + ')'
+            }"
+            @click="display3DModel(sample)"
+          ></div>
+          <div v-else class="slide" :key="index"></div>
+        </template>
+        <!-- <div
+          class="slide"
+          :style="{
+            backgroundImage: 'url(' + require('@/assets/BA5566.png') + ')'
+          }"
+        ></div>
         <div
           class="slide"
           :style="{
-            backgroundImage: 'url(' + require('@/assets/bag-1.png') + ')'
+            backgroundImage: 'url(' + require('@/assets/H09Z1805.png') + ')'
           }"
-        >
-          <!-- <img src="@/assets/bag-1.png" alt="" /> -->
-        </div>
+        ></div>
         <div
           class="slide"
           :style="{
-            backgroundImage: 'url(' + require('@/assets/bag-3.png') + ')'
+            backgroundImage: 'url(' + require('@/assets/BA5760.png') + ')'
           }"
-        >
-          <!-- <img src="@/assets/bag-3.png" alt="" /> -->
-        </div>
-        <div
-          class="slide"
-          :style="{
-            backgroundImage: 'url(' + require('@/assets/bag-2.png') + ')'
-          }"
-        >
-          <!-- <img src="@/assets/bag-2.png" alt="" /> -->
-        </div>
+        ></div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import interact from "interactjs";
+
 export default {
   name: "DragPanel",
+  props: {
+    samples: Array
+  },
   data() {
     return {
       active: false
     };
   },
+  mounted() {
+    // this.createInteract();
+  },
+  computed: {
+    displaySamples() {
+      const result = this.samples;
+
+      // fake substr in obj
+      result.forEach(r => {
+        r.imgSrc = `images/${r.ProductNo}.png`;
+        // r.imgSrc = "images/B01T01-001.png";
+      });
+
+      return result;
+    },
+    dataSet() {
+      console.log(this.currentMenuSet);
+      if (!this.currentMenuSet) {
+        return [];
+      }
+
+      const imageSet = ["BA5566", "H09Z1805", "BA5760"];
+
+      return imageSet;
+    }
+  },
   methods: {
     openDragPanel() {
       this.active = !this.active;
     },
-    resize(e) {
-      console.log(e);
+    display3DModel(sample) {
+      this.$emit("display3DModel", sample);
     },
-    dragDown(e) {
-      document.addEventListener("mousemove", this.resize(e), false);
+    createInteract() {
+      const _target = interact(".drag-panel");
+
+      _target
+        .resizable({
+          edges: { top: true },
+          inertia: true,
+          listeners: {
+            move: this.resizeListener
+          },
+          modifiers: [
+            interact.modifiers.restrictEdges({
+              outer: "parent"
+            }),
+            interact.modifiers.restrictSize({
+              min: { height: 48 },
+              max: { height: 256 }
+            })
+          ]
+        })
+        .draggable({
+          startAxis: "y",
+          lockAxis: "y",
+          inertia: true,
+          listeners: { move: this.dragMoveListener },
+          modifiers: [
+            interact.modifiers.restrictRect({
+              restriction: "parent",
+              endOnly: true
+            })
+          ]
+        });
     },
-    dragLeave(e) {
-      document.removeEventListener("mousemove", this.resize(e), false);
+    resizeListener(event) {
+      const _target = event.target;
+      let y = parseFloat(_target.getAttribute("data-y")) || 0;
+
+      // update element style
+      _target.style.height = event.rect.height + "px";
+
+      // translate when resizing from top edge
+      _target.style.height = event.rect.height + `${y}px`;
+
+      y += event.deltaRect.top;
+
+      _target.setAttribute("data-y", y);
+    },
+    dragMoveListener(event) {
+      const _target = event.target;
+
+      // keep the dragged position in data-y attribute
+      const y = (parseFloat(_target.getAttribute("data-y")) || 0) + event.dy;
+
+      // translate the element
+      _target.style.height = event.rect.height + `${y}px`;
+
+      // update the position attributes
+      _target.setAttribute("data-y", y);
     }
   }
 };
@@ -71,8 +161,9 @@ export default {
   border-top-right-radius: 0.4rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 99;
+  z-index: 999;
   transition: all 0.4s cubic-bezier(0.12, 1.16, 0.65, 0.88);
+  touch-action: none;
 
   &.active {
     height: 16rem;
